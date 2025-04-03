@@ -10,7 +10,7 @@ const projects = [
   {
     id: "portfolio",
     name: "Portfolio",
-    url: "https://www.cetolike.fr/",
+    url: "https://github.com/josephDelnord/portfolio",
     imageUrl: portfolio,
     tags: [
       "React",
