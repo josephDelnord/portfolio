@@ -1,50 +1,109 @@
-# React + TypeScript + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce projet est un portfolio personnel créé avec React et TypeScript. Il présente une série de pages permettant de découvrir les informations à propos de l'auteur, ses compétences, ses projets, ainsi que ses informations de contact. Le site utilise également React Router pour gérer les différentes routes entre les pages.
 
-Currently, two official plugins are available:
+## Table des matières
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Portfolio](#portfolio)
+  - [Table des matières](#table-des-matières)
+  - [Prérequis](#prérequis)
+  - [Installation](#installation)
+  - [Structure du projet](#structure-du-projet)
+  - [Composants principaux](#composants-principaux)
+  - [Fonctionnalités](#fonctionnalités)
+  - [Auteurs](#auteurs)
 
-## Expanding the ESLint configuration
+## Prérequis
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur votre machine :
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js (version 14 ou supérieure)
+- npm ou yarn (gestionnaire de paquets)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Installation
+
+Suivez ces étapes pour installer et démarrer le projet en local :
+
+1. Clonez le repository :
+
+```bash
+git clone https://github.com/josephDelnord/portfolio.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Accédez au dossier du projet :
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd portfolio
 ```
+
+3. Installez les dépendances via npm ou yarn :
+
+```bash
+npm install
+# ou
+yarn install
+
+```
+
+4. Lancez le serveur de développement local :
+
+```bash
+npm run dev
+# ou
+yarn run dev
+
+
+```
+
+Cela ouvrira l'application dans votre navigateur à l'adresse http://localhost:3000.
+
+
+## Structure du projet
+
+Voici la structure des fichiers du projet :
+
+```plaintext
+portfolio/
+├── src/
+│   ├── components/          # Composants React
+│   │   ├── Header.tsx       # En-tête du site
+│   │   ├── Home.tsx         # Page d'accueil
+│   │   ├── About.tsx        # Page "À propos"
+│   │   ├── Careers.tsx      # Page "Carrières"
+│   │   ├── Skills.tsx       # Page "Compétences"
+│   │   ├── Projects.tsx     # Page "Projets"
+│   │   ├── Contact.tsx      # Page "Contact"
+│   │   └── Footer.tsx       # Pied de page
+│   ├── assets/              # Dossier des ressources statiques (images, icônes, etc.)
+│   │   └── img/
+│   │       └── hero.webp    # Image de fond
+│   └── App.tsx              # Composant principal
+└── public/
+    └── index.html           # Fichier HTML principal
+
+```
+## Composants principaux
+
+Le projet comprend plusieurs composants principaux qui sont décrits ci-dessous :
+
+- `Header` : Contient le menu de navigation qui permet de se déplacer entre les différentes sections du portfolio.
+- `Home` : La page d'accueil qui présente un résumé et une introduction personnelle.
+- `About` : Cette page contient une présentation détaillée de mon parcours, mes objectifs et mes motivations professionnelles.
+- `Careers` : Présente mon expérience professionnelle et les entreprises pour lesquelles j'ai travaillé.
+- `Skills` : Liste des technologies, langages et outils que je maîtrise.
+- `Projects` : Une galerie interactive présentant mes projets passés, incluant des démonstrations et des liens vers des GitHub repos.
+- `Contact` : Un formulaire permettant aux visiteurs de me contacter directement.
+
+En utilisant ces composants, vous pouvez créer une interface utilisateur dynamique et attrayante pour votre portfolio.
+
+## Fonctionnalités
+
+Ce portfolio offre diverses fonctionnalités pour améliorer l'expérience utilisateur :
+
+- **Navigation fluide** : Navigation entre les différentes sections du site grâce à React Router.
+- **Réactivité** : Le site est entièrement responsive et s'adapte à tous les types d'écrans.
+- **Design moderne** : Utilisation de Tailwind CSS pour créer une interface élégante et fonctionnelle.
+- **Contact facile** : Un formulaire de contact pour échanger rapidement avec moi.
+
+## Auteurs
+Joseph Delnord - Développeur web passionné par la création d'applications Web modernes et intuitives.
