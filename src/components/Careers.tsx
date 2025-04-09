@@ -9,7 +9,7 @@ interface TimelineItem {
   date: string;
   title: string;
   description: string;
-  type: "diploma" | "experience"; // Type de l'événement : diplôme ou expérience
+  type: "diploma" | "experience" | "certification"; // Type de l'événement : diplôme ou expérience
   etablissement: string; // Établissement associé à l'événement
 }
 
@@ -17,8 +17,10 @@ interface TimelineItem {
 const typeColors = {
   diploma: "bg-sky-600", // Couleur pour les diplômes
   experience: "bg-pink-600", // Couleur pour les expériences
+  certification: "bg-green-600", // Couleur pour les certifications
   diplomaText: "text-sky-600", // Couleur du texte pour les diplômes
   experienceText: "text-pink-600", // Couleur du texte pour les expériences
+  certificationText: "text-green-600", // Couleur du texte pour les certifications
 };
 
 const timelineData: TimelineItem[] = [
@@ -40,12 +42,68 @@ const timelineData: TimelineItem[] = [
     type: "diploma",
   },
   {
+    date: "2024-2027",
+    title: "Opquast certification",
+    etablissement: "Opquast",
+    description:
+      "Intégrer les règles et le vocabulaire assurance qualité web dans sa pratique professionnelle.",
+    type: "certification", // Nouvelle catégorie Certification
+  },
+  {
     date: "2023 - 2024",
     title: "Technicien support systèmes & réseaux (stage)",
     etablissement: "HNCS",
     description:
       "Stage en tant que technicien support systèmes et réseaux, impliquant la gestion de l'infrastructure réseau et le support technique.",
     type: "experience",
+  },
+  {
+    date: "Juin 2024",
+    title: "CCNA: Enterprise Networking, Security, and Automation",
+    etablissement: "Cisco",
+    description:
+      "Certification CCNA, couvrant les concepts fondamentaux des réseaux, la sécurité et l'automatisation.",
+    type: "certification", // Nouvelle catégorie Certification
+  },
+  {
+    date: "Mai 2024",
+    title: "CCNA: Switching, Routing, and Wireless Essentials",
+    etablissement: "Cisco",
+    description:
+      "Certification CCNA, couvrant les concepts fondamentaux des réseaux, la sécurité et l'automatisation.",
+    type: "certification", // Nouvelle catégorie Certification
+  },
+  {
+    date: "Février 2024",
+    title: "CCNA: Introduction to Networks",
+    etablissement: "Cisco",
+    description:
+      "Certification CCNA, couvrant les concepts fondamentaux des réseaux, la sécurité et l'automatisation.",
+    type: "certification", // Nouvelle catégorie Certification
+  },
+  {
+    date: "Janvier 2024",
+    title: "Concevez votre site web avec PHP et MySQL",
+    etablissement: "OpenClassrooms",
+    description:
+      "Formation sur la conception de sites web dynamiques avec PHP et MySQL, incluant la gestion des bases de données et le développement back-end.",
+    type: "certification", // Nouvelle catégorie Certification
+  },
+  {
+    date: "Janvier 2024",
+    title: "Créez votre site web avec HTML5 et CSS3",
+    etablissement: "OpenClassrooms",
+    description:
+      "Formation sur la création de sites web statiques avec HTML5 et CSS3, incluant les meilleures pratiques de développement front-end.",
+    type: "certification", // Nouvelle catégorie Certification
+  },
+  {
+    date: "2023-2024",
+    title: "The Complete DevOps Bootcamp",
+    etablissement: "KodeKloud",
+    description:
+      "Formation complète sur les pratiques DevOps, y compris l'intégration continue, le déploiement continu et la gestion des infrastructures.",
+    type: "certification", // Nouvelle catégorie Certification
   },
   {
     date: "2022 - 2023",
@@ -55,6 +113,46 @@ const timelineData: TimelineItem[] = [
     description:
       "Formation intensive en systèmes et réseaux, mettant l'accent sur la gestion des infrastructures informatiques, la sécurité et le support technique.",
     type: "diploma",
+  },
+  {
+    date: "Mars 2022",
+    title: "Réalisez un cahier des charges fonctionnel",
+    etablissement: "OpenClassrooms",
+    description:
+      "Formation sur la création de cahiers des charges fonctionnels, incluant la collecte des besoins et la rédaction de spécifications techniques.",
+    type: "certification", // Nouvelle catégorie Certification
+  },
+  {
+    date: "Février 2022",
+    title: "Appropriez-vous la démarche UX en pratique",
+    etablissement: "OpenClassrooms",
+    description:
+      "Formation sur la démarche UX, incluant la recherche utilisateur, la conception d'interfaces et l'évaluation de l'expérience utilisateur.",
+    type: "certification", // Nouvelle catégorie Certification
+  },
+  {
+    date: "Février 2022",
+    title: "Créez des visuels avec Illustrator",
+    etablissement: "OpenClassrooms",
+    description:
+      "Formation sur la création de visuels avec Adobe Illustrator, incluant la conception graphique et l'illustration numérique.",
+    type: "certification", // Nouvelle catégorie Certification
+  },
+  {
+    date: "Janvier 2022",
+    title: "Gérez un projet digital avec une méthodologie en cascade",
+    etablissement: "OpenClassrooms",
+    description:
+      "Formation sur la gestion de projets digitaux avec une méthodologie en cascade, incluant la planification, l'exécution et le suivi des projets.",
+    type: "certification", // Nouvelle catégorie Certification
+  },
+  {
+    date: "Janvier 2022",
+    title: "UX design : découvrez les fondamentaux !",
+    etablissement: "OpenClassrooms",
+    description:
+      "Formation sur les fondamentaux de l'UX design, incluant la recherche utilisateur, la conception d'interfaces et l'évaluation de l'expérience utilisateur.",
+    type: "certification", // Nouvelle catégorie Certification
   },
   {
     date: "2019 - 2023",
@@ -161,8 +259,10 @@ const Careers: React.FC = () => {
             >
               {item.type === "diploma" ? (
                 <i className="fas fa-graduation-cap text-white text-2xl" />
-              ) : (
+              ) : item.type === "experience" ? (
                 <i className="fas fa-briefcase text-white text-2xl" />
+              ) : (
+                <i className="fas fa-award text-white text-2xl" /> // Pictogramme pour la certification
               )}
             </div>
 

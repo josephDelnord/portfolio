@@ -40,7 +40,7 @@ const Skills: React.FC = () => {
             </div>
 
             {/* Face Arrière (Liste alignée à gauche uniquement) */}
-            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg">
+            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg flex items-center justify-center">
               <ul className="list-disc pl-6 text-black">
                 <li>Maquettage avec Figma</li>
                 <li>Design UI/UX (Expérience utilisateur, Prototypage)</li>
@@ -63,7 +63,7 @@ const Skills: React.FC = () => {
             </div>
 
             {/* Face Arrière (Liste alignée à gauche uniquement) */}
-            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg">
+            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg flex items-center justify-center">
               <ul className="list-disc pl-6 text-black">
                 <li>HTML5 & CSS3 (Flexbox, Grid, animations)</li>
                 <li>JavaScript (ES6+)</li>
@@ -90,7 +90,7 @@ const Skills: React.FC = () => {
             </div>
 
             {/* Face Arrière (Liste alignée à gauche uniquement) */}
-            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg">
+            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg flex items-center justify-center">
               <ul className="list-disc pl-6 text-black">
                 <li>Node.js</li>
                 <li>Express.js</li>
@@ -102,7 +102,8 @@ const Skills: React.FC = () => {
                 <li>Authentication (JWT, OAuth2)</li>
                 <li>ORM (Sequelize, Mongoose)</li>
                 <li>Gestion des erreurs et validation des données</li>
-                <li>Tests unitaires et d'intégration (Jest, Mocha)</li>
+                <li>Tests unitaires et d'intégration (Jest, cypress)</li>
+                <li>Gestion du cache (Redis, Memcached)</li>
               </ul>
             </div>
           </div>
@@ -121,12 +122,12 @@ const Skills: React.FC = () => {
             </div>
 
             {/* Face Arrière (Liste alignée à gauche uniquement) */}
-            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg">
+            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg flex items-center justify-center">
               <ul className="list-disc pl-6 text-black">
                 <li>Netlify, Vercel</li>
                 <li>Heroku</li>
                 <li>Docker, Docker Compose et Docker Swarm</li>
-                <li>CI/CD pipelines</li>
+                <li>CI/CD pipelines (GitHub Actions, Jenkins)</li>
               </ul>
             </div>
           </div>
@@ -154,18 +155,13 @@ const Skills: React.FC = () => {
             </div>
 
             {/* Face Arrière (Liste alignée à gauche uniquement) */}
-            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg">
+            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg flex items-center justify-center">
               <ul className="list-disc pl-6 text-black">
                 <li>Gestion des projets agiles (Scrum, Kanban)</li>
-                <li>Planification et suivi des sprints</li>
-                <li>Gestion des ressources humaines et matérielles</li>
-                <li>Suivi des indicateurs de performance (KPI)</li>
                 <li>Outils de gestion de projet : Jira, Trello, Asana</li>
                 <li>Communication et coordination des équipes</li>
-                <li>Estimation des délais et des coûts</li>
+                <li>Estimation des délais</li>
                 <li>Rédaction et gestion des documents de projet</li>
-                <li>Gestion des risques et des conflits</li>
-                <li>Veille et amélioration continue des processus</li>
               </ul>
             </div>
           </div>
@@ -183,18 +179,18 @@ const Skills: React.FC = () => {
             </div>
 
             {/* Face Arrière (Liste alignée à gauche uniquement) */}
-            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg">
+            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg flex items-center justify-center">
               <ul className="list-disc pl-6 text-black">
                 <li>Linux (Debian, Ubuntu), Windows, macOS</li>
-                <li>VSCode, WebStorm</li>
+                <li>IDEs : VSCode </li>
                 <li>Intégration continue / Livraison continue (CI/CD)</li>
                 <li>Git, GitHub, GitLab, GitFlow</li>
                 <li>Trello, Jira, Notion</li>
                 <li>Slack, Discord, Zoom, Google Meet</li>
-                <li>Markdown, Confluence</li>
+                <li>Markdown</li>
                 <li>Postman, Insomnia</li>
                 <li>Chrome DevTools, React DevTools</li>
-                <li>Lighthouse, WebPageTest</li>
+                <li>Lighthouse</li>
               </ul>
             </div>
           </div>
@@ -213,11 +209,11 @@ const Skills: React.FC = () => {
             </div>
 
             {/* Face Arrière (Liste alignée à gauche uniquement) */}
-            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg">
+            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg flex items-center justify-center">
               <ul className="list-disc pl-6 text-black">
                 <li>Gestion des serveurs (Linux, Apache, Nginx)</li>
                 <li>Configuration des réseaux (DHCP, DNS, VPN)</li>
-                <li>Sécurité des systèmes et réseaux (Firewall, SSH)</li>
+                <li>Sécurité des systèmes et réseaux (SSH)</li>
                 <li>Virtualisation avec VirtualBox, VMware, Hyper-V</li>
               </ul>
             </div>
@@ -236,11 +232,9 @@ const Skills: React.FC = () => {
             </div>
 
             {/* Face Arrière (Liste alignée à gauche uniquement) */}
-            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg">
+            <div className="flip-card-back w-full h-full p-6 bg-white rounded-lg flex items-center justify-center">
               <ul className="list-disc pl-6 text-black">
                 <li>Anglais technique (Niveau B1)</li>
-                <li>Gestion de projets agiles (Scrum, Kanban)</li>
-                <li>Création et gestion de documentation technique</li>
                 <li>Communication efficace en équipe</li>
                 <li>Résolution de problèmes</li>
                 <li>Esprit d'analyse et de synthèse</li>
