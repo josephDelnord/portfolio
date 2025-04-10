@@ -23,7 +23,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" onClick={closeMenu}>
-          <img src={logo} alt="Logo" className="w-24 h-auto" />
+          <img src={logo} alt="Logo" className="w-32 h-32" />
         </Link>
 
         {/* Burger Button - visible en mobile */}
