@@ -6,6 +6,7 @@ import {
   FaTools,
   FaBriefcase,
 } from "react-icons/fa";
+import logo from "../assets/img/logo.webp";
 
 const Header: React.FC = () => {
   return (
@@ -13,11 +14,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto p-6 flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <Link to="/">
-            <img
-              src="./src/assets/img/logo.webp"
-              alt="Logo"
-              className="w-40 h-40"
-            />
+            <img src={logo} alt="Logo" className="w-40 h-40" />
           </Link>
         </div>
 
