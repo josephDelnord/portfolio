@@ -135,49 +135,51 @@ const ProjectsList: React.FC = () => {
   };
 
   return (
-    <section className="flex flex-col items-center justify-between min-h-screen my-32">
-      <div className="container mx-auto p-8 bg-white rounded-lg shadow-lg mb-auto">
-        <div className="relative mb-20 mt-10">
-          <div className="relative px-6 py-4 bg-gradient-to-r from-teal-400 to-blue-500 rounded-lg shadow-md">
-            <h2 className="text-4xl font-semibold text-white text-center">
-              Mes projets
-            </h2>
+    <div className="min-h-screen pt-40 mt-32 mb-32">
+      <section className="flex flex-col items-center justify-between min-h-screen">
+        <div className="container mx-auto p-8 bg-white rounded-lg shadow-lg mb-auto">
+          <div className="relative mb-20 mt-10">
+            <div className="relative px-6 py-4 bg-gradient-to-r from-teal-400 to-blue-500 rounded-lg shadow-md">
+              <h2 className="text-4xl font-semibold text-white text-center">
+                Mes projets
+              </h2>
+            </div>
           </div>
-        </div>
 
-        {/* Wrapper responsive */}
-        <div className="w-full overflow-x-hidden px-2 sm:px-0">
-          <div className="flex flex-wrap justify-center">
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+          {/* Wrapper responsive */}
+          <div className="w-full overflow-x-hidden px-2 sm:px-0">
+            <div className="flex flex-wrap justify-center">
+              {projects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
           </div>
-        </div>
 
-        <footer className="mt-20 text-center mx-20">
-          <p className="text-xl text-gray-700 mb-4">
-            N’hésitez pas à me contacter pour explorer les possibilités de
-            collaboration !
-          </p>
-          <div className="flex justify-center gap-4 mt-20 mb-20">
-            <button
-              type="button"
-              className="px-6 py-3 bg-white text-blue-500 font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white border-2 border-blue-500 hover:border-blue-900 transition duration-300"
-              onClick={handleClick}
-            >
-              Me contacter
-            </button>
-            <button
-              type="button"
-              className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white transition duration-300"
-              onClick={handleDownloadCV}
-            >
-              Télécharger mon CV
-            </button>
-          </div>
-        </footer>
-      </div>
-    </section>
+          <footer className="mt-20 text-center mx-20">
+            <p className="text-xl text-gray-700 mb-4">
+              N’hésitez pas à me contacter pour explorer les possibilités de
+              collaboration !
+            </p>
+            <div className="flex justify-center gap-4 mt-20 mb-20">
+              <button
+                type="button"
+                className="px-6 py-3 bg-white text-blue-500 font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white border-2 border-blue-500 hover:border-blue-900 transition duration-300"
+                onClick={handleClick}
+              >
+                Me contacter
+              </button>
+              <button
+                type="button"
+                className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white transition duration-300"
+                onClick={handleDownloadCV}
+              >
+                Télécharger mon CV
+              </button>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </div>
   );
 };
 

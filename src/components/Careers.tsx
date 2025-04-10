@@ -219,105 +219,107 @@ const Careers: React.FC = () => {
     saveAs(fileUrl, "cv_joseph_delnord.pdf");
   };
   return (
-    <section className="container mx-auto p-8 bg-white rounded-lg shadow-xl my-32">
-      <div className="relative mb-20 mt-10">
-        <div className="relative px-6 py-4 bg-gradient-to-r from-teal-400 to-blue-500 rounded-lg shadow-md">
-          <h2 className="text-4xl font-semibold text-white text-center">
-            Mon parcours professionnel
-          </h2>
+    <div className="min-h-screen pt-40 mt-32 mb-32">
+      <section className="container mx-auto p-8 bg-white rounded-lg shadow-xl">
+        <div className="relative mb-20 mt-10">
+          <div className="relative px-6 py-4 bg-gradient-to-r from-teal-400 to-blue-500 rounded-lg shadow-md">
+            <h2 className="text-4xl font-semibold text-white text-center">
+              Mon parcours professionnel
+            </h2>
+          </div>
         </div>
-      </div>
 
-      <div className="relative">
-        {/* Ligne verticale uniquement en mode bureau */}
-        <div
-          className={`border-l-2 ${typeColors.diploma} h-full absolute sm:left-1/2 left-0 transform -translate-x-1/2 sm:translate-x-0 sm:block hidden`}
-        />
-        {timelineData.map((item, index) => (
-          <motion.div
-            key={`${item.title}-${item.date}`}
-            initial={{
-              opacity: 0,
-              x: index % 2 === 0 ? -200 : 200, // Animation de gauche/droite
-            }}
-            animate={{ opacity: 1, x: 0 }} // Finition de l'animation
-            transition={{
-              duration: 1,
-              delay: index * 0.3, // Délai pour l'animation de chaque élément
-              type: "spring",
-              stiffness: 80,
-            }}
-            className={`relative flex flex-col sm:flex-row ${
-              index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"
-            } items-center sm:items-start mb-12`} // Ajout de justify-start/end en mode sm
-          >
-            {/* Cercle contenant le picto - icône */}
-            <div
-              className={`relative w-12 h-12 rounded-full border-4 border-white ${
-                typeColors[item.type]
-              } flex items-center justify-center mb-4 sm:mb-0 sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2`} // Positionner sur la ligne verticale
+        <div className="relative">
+          {/* Ligne verticale uniquement en mode bureau */}
+          <div
+            className={`border-l-2 ${typeColors.diploma} h-full absolute sm:left-1/2 left-0 transform -translate-x-1/2 sm:translate-x-0 sm:block hidden`}
+          />
+          {timelineData.map((item, index) => (
+            <motion.div
+              key={`${item.title}-${item.date}`}
+              initial={{
+                opacity: 0,
+                x: index % 2 === 0 ? -200 : 200, // Animation de gauche/droite
+              }}
+              animate={{ opacity: 1, x: 0 }} // Finition de l'animation
+              transition={{
+                duration: 1,
+                delay: index * 0.3, // Délai pour l'animation de chaque élément
+                type: "spring",
+                stiffness: 80,
+              }}
+              className={`relative flex flex-col sm:flex-row ${
+                index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"
+              } items-center sm:items-start mb-12`} // Ajout de justify-start/end en mode sm
             >
-              {item.type === "diploma" ? (
-                <i className="fas fa-graduation-cap text-white text-2xl" />
-              ) : item.type === "experience" ? (
-                <i className="fas fa-briefcase text-white text-2xl" />
-              ) : (
-                <i className="fas fa-award text-white text-2xl" /> // Pictogramme pour la certification
-              )}
-            </div>
-
-            {/* Contenu de l'événement */}
-            <div
-              className={`w-full max-w-[400px] text-gray-800 ${
-                index % 2 === 0 ? "sm:ml-12" : "sm:mr-12"
-              } sm:text-center`} // Centrer le texte en mode mobile
-            >
-              <div className="flex items-center mb-2 justify-center sm:justify-center">
-                <h3
-                  className={`text-xl font-semibold ${
-                    typeColors[`${item.type}Text` as keyof typeof typeColors]
-                  } text-center`} // Centrer le titre sur tous les écrans
-                >
-                  {item.title}
-                </h3>
+              {/* Cercle contenant le picto - icône */}
+              <div
+                className={`relative w-12 h-12 rounded-full border-4 border-white ${
+                  typeColors[item.type]
+                } flex items-center justify-center mb-4 sm:mb-0 sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2`} // Positionner sur la ligne verticale
+              >
+                {item.type === "diploma" ? (
+                  <i className="fas fa-graduation-cap text-white text-2xl" />
+                ) : item.type === "experience" ? (
+                  <i className="fas fa-briefcase text-white text-2xl" />
+                ) : (
+                  <i className="fas fa-award text-white text-2xl" /> // Pictogramme pour la certification
+                )}
               </div>
-              <div className="flex mb-2 justify-center sm:justify-center">
-                <p className="text-sm text-gray-600 mr-4">{item.date},</p>
-                <p className="text-sm text-gray-600">{item.etablissement}</p>
-              </div>
-              <p className="text-lg mt-2 text-center sm:text-center">
-                {item.description}
-              </p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
 
-      <footer className="mt-20 text-center mx-20">
-        <p className="text-xl text-gray-700 mb-4">
-          N’hésitez pas à me contacter pour explorer les possibilités de
-          collaboration !
-        </p>
-        <div className="flex justify-center gap-4 mt-20 mb-20">
-          {/* Bouton Contact */}
-          <button
-            type="button"
-            className="px-6 py-3 bg-white text-blue-500 font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white border-2 border-blue-500 hover:border-blue-900 transition duration-300"
-            onClick={handleClick}
-          >
-            Me contacter
-          </button>
-          {/* Bouton Télécharger CV avec handler */}
-          <button
-            type="button"
-            className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white transition duration-300"
-            onClick={handleDownloadCV}
-          >
-            Télécharger mon CV
-          </button>
+              {/* Contenu de l'événement */}
+              <div
+                className={`w-full max-w-[400px] text-gray-800 ${
+                  index % 2 === 0 ? "sm:ml-12" : "sm:mr-12"
+                } sm:text-center`} // Centrer le texte en mode mobile
+              >
+                <div className="flex items-center mb-2 justify-center sm:justify-center">
+                  <h3
+                    className={`text-xl font-semibold ${
+                      typeColors[`${item.type}Text` as keyof typeof typeColors]
+                    } text-center`} // Centrer le titre sur tous les écrans
+                  >
+                    {item.title}
+                  </h3>
+                </div>
+                <div className="flex mb-2 justify-center sm:justify-center">
+                  <p className="text-sm text-gray-600 mr-4">{item.date},</p>
+                  <p className="text-sm text-gray-600">{item.etablissement}</p>
+                </div>
+                <p className="text-lg mt-2 text-center sm:text-center">
+                  {item.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </footer>
-    </section>
+
+        <footer className="mt-20 text-center mx-20">
+          <p className="text-xl text-gray-700 mb-4">
+            N’hésitez pas à me contacter pour explorer les possibilités de
+            collaboration !
+          </p>
+          <div className="flex justify-center gap-4 mt-20 mb-20">
+            {/* Bouton Contact */}
+            <button
+              type="button"
+              className="px-6 py-3 bg-white text-blue-500 font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white border-2 border-blue-500 hover:border-blue-900 transition duration-300"
+              onClick={handleClick}
+            >
+              Me contacter
+            </button>
+            {/* Bouton Télécharger CV avec handler */}
+            <button
+              type="button"
+              className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white transition duration-300"
+              onClick={handleDownloadCV}
+            >
+              Télécharger mon CV
+            </button>
+          </div>
+        </footer>
+      </section>
+    </div>
   );
 };
 

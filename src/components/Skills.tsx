@@ -25,6 +25,15 @@ const Skills: React.FC = () => {
     saveAs(fileUrl, "cv_joseph_delnord.pdf");
   };
 
+  // Séparons les cartes de compétences et le titre
+  const titleCard = {
+    title: "Mes compétences",
+    icon: null,
+    gradient: "",
+    items: [],
+    isTitle: true,
+  };
+
   const skillsData = [
     {
       title: "Conception et Web Design",
@@ -85,13 +94,6 @@ const Skills: React.FC = () => {
       ],
     },
     {
-      title: "Mes compétences",
-      icon: null,
-      gradient: "",
-      items: [],
-      isTitle: true,
-    },
-    {
       title: "Gestion de Projet",
       icon: <FaTasks className="text-5xl sm:text-3xl mb-4" />,
       gradient: "from-blue-400 to-green-500",
@@ -146,67 +148,94 @@ const Skills: React.FC = () => {
     },
   ];
 
-  return (
-    <section className="container mx-auto p-8 sm:p-4 bg-white rounded-lg shadow-xl my-32">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {skillsData.map(({ title, icon, gradient, items, isTitle }) =>
-          isTitle ? (
-            <div
-              key={title}
-              className="w-full h-[350px] bg-white flex items-center justify-center rounded-lg p-6 sm:p-4"
-            >
-              <h2 className="text-5xl sm:text-3xl font-bold text-gray-800 text-center">
-                {title}
-              </h2>
-            </div>
-          ) : (
-            <div key={title} className="flip-card w-full h-[350px]">
-              <div className="flip-card-inner w-full h-full">
-                <div
-                  className={`flip-card-front w-full h-full flex items-center justify-center flex-col text-white bg-gradient-to-r ${gradient} p-6 sm:p-4 rounded-lg`}
-                >
-                  {icon}
-                  <h3 className="text-3xl sm:text-xl font-semibold text-center">
-                    {title}
-                  </h3>
-                </div>
-                <div className="flip-card-back w-full h-full p-6 sm:p-4 bg-white rounded-lg flex items-center justify-center">
-                  <ul className="list-disc pl-6 sm:pl-4 text-black text-base sm:text-sm">
-                    {items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          )
-        )}
-      </div>
+  // Calculer l'index pour positionner le titre au milieu en mode desktop
+  const middleIndex = Math.floor(skillsData.length / 2);
 
-      {/* Footer */}
-      <footer className="mt-20 text-center mx-20">
-        <p className="text-xl text-gray-700 mb-4">
-          N’hésitez pas à me contacter pour explorer les possibilités de
-          collaboration !
-        </p>
-        <div className="flex justify-center gap-4 mt-20 mb-20">
-          <button
-            type="button"
-            className="px-6 py-3 bg-white text-blue-500 font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white border-2 border-blue-500 hover:border-blue-900 transition duration-300"
-            onClick={handleClick}
-          >
-            Me contacter
-          </button>
-          <button
-            type="button"
-            className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white transition duration-300"
-            onClick={handleDownloadCV}
-          >
-            Télécharger mon CV
-          </button>
+  // Fonction pour rendre une carte de compétence
+  interface SkillData {
+    title: string;
+    icon: React.ReactNode;
+    gradient: string;
+    items: string[];
+  }
+
+  const renderSkillCard = (skillData: SkillData): JSX.Element => (
+    <div key={skillData.title} className="flip-card w-full h-[350px]">
+      <div className="flip-card-inner w-full h-full">
+        <div
+          className={`flip-card-front w-full h-full flex items-center justify-center flex-col text-white bg-gradient-to-r ${skillData.gradient} p-6 sm:p-4 rounded-lg`}
+        >
+          {skillData.icon}
+          <h3 className="text-3xl sm:text-xl font-semibold text-center">
+            {skillData.title}
+          </h3>
         </div>
-      </footer>
-    </section>
+        <div className="flip-card-back w-full h-full p-6 sm:p-4 bg-white rounded-lg flex items-center justify-center">
+          <ul className="list-disc pl-6 sm:pl-4 text-black text-base sm:text-sm">
+            {skillData.items.map((item: string) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Fonction pour rendre la carte de titre
+  const renderTitleCard = () => (
+    <div
+      key={titleCard.title}
+      className="w-full h-[350px] bg-white flex items-center justify-center rounded-lg p-6 sm:p-4"
+    >
+      <h2 className="text-5xl sm:text-3xl font-bold text-gray-800 text-center">
+        {titleCard.title}
+      </h2>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen pt-40 mt-32 mb-32">
+      {/* Cette div couvre toute la hauteur de l'écran et commence après le header */}
+      <section className="container mx-auto p-8 sm:p-4 bg-white rounded-lg shadow-xl">
+        {/* Version mobile: Titre en haut */}
+        <div className="md:hidden mb-8">{renderTitleCard()}</div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Premier groupe de cartes (avant la carte titre) */}
+          {skillsData.slice(0, middleIndex).map(renderSkillCard)}
+
+          {/* Carte titre pour desktop seulement (au milieu) */}
+          <div className="hidden md:block">{renderTitleCard()}</div>
+
+          {/* Deuxième groupe de cartes (après la carte titre) */}
+          {skillsData.slice(middleIndex).map(renderSkillCard)}
+        </div>
+
+        {/* Footer */}
+        <footer className="mt-20 text-center mx-20">
+          <p className="text-xl text-gray-700 mb-4">
+            N'hésitez pas à me contacter pour explorer les possibilités de
+            collaboration !
+          </p>
+          <div className="flex justify-center gap-4 mt-20 mb-20">
+            <button
+              type="button"
+              className="px-6 py-3 bg-white text-blue-500 font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white border-2 border-blue-500 hover:border-blue-900 transition duration-300"
+              onClick={handleClick}
+            >
+              Me contacter
+            </button>
+            <button
+              type="button"
+              className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white transition duration-300"
+              onClick={handleDownloadCV}
+            >
+              Télécharger mon CV
+            </button>
+          </div>
+        </footer>
+      </section>
+    </div>
   );
 };
 
