@@ -1,5 +1,4 @@
 import type React from "react";
-import { useNavigate } from "react-router-dom";
 import {
   FaReact,
   FaNodeJs,
@@ -10,21 +9,9 @@ import {
   FaDatabase,
   FaTasks,
 } from "react-icons/fa";
-import cv from "../assets/docs/cv_joseph_delnord.pdf";
-import { saveAs } from "file-saver";
+import FooterPage from "./FooterPage";
 
 const Skills: React.FC = () => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/contact");
-  };
-
-  const handleDownloadCV = () => {
-    const fileUrl = cv;
-    saveAs(fileUrl, "cv_joseph_delnord.pdf");
-  };
-
   // Séparons les cartes de compétences et le titre
   const titleCard = {
     title: "Mes compétences",
@@ -210,30 +197,7 @@ const Skills: React.FC = () => {
           {/* Deuxième groupe de cartes (après la carte titre) */}
           {skillsData.slice(middleIndex).map(renderSkillCard)}
         </div>
-
-        {/* Footer */}
-        <footer className="mt-20 text-center mx-20">
-          <p className="text-xl text-gray-700 mb-4">
-            N'hésitez pas à me contacter pour explorer les possibilités de
-            collaboration !
-          </p>
-          <div className="flex justify-center gap-4 mt-20 mb-20">
-            <button
-              type="button"
-              className="px-6 py-3 bg-white text-blue-500 font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white border-2 border-blue-500 hover:border-blue-900 transition duration-300"
-              onClick={handleClick}
-            >
-              Me contacter
-            </button>
-            <button
-              type="button"
-              className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white transition duration-300"
-              onClick={handleDownloadCV}
-            >
-              Télécharger mon CV
-            </button>
-          </div>
-        </footer>
+        <FooterPage />
       </section>
     </div>
   );
