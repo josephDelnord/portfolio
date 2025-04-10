@@ -219,7 +219,7 @@ const Careers: React.FC = () => {
     saveAs(fileUrl, "cv_joseph_delnord.pdf");
   };
   return (
-    <section className="container mx-auto p-8 bg-white rounded-lg shadow-xl my-20">
+    <section className="container mx-auto p-8 bg-white rounded-lg shadow-xl my-32">
       <div className="relative mb-20 mt-10">
         <div className="relative px-6 py-4 bg-gradient-to-r from-teal-400 to-blue-500 rounded-lg shadow-md">
           <h2 className="text-4xl font-semibold text-white text-center">
@@ -276,7 +276,7 @@ const Careers: React.FC = () => {
                 <h3
                   className={`text-xl font-semibold ${
                     typeColors[`${item.type}Text` as keyof typeof typeColors]
-                  }`}
+                  } text-center`} // Centrer le titre sur tous les écrans
                 >
                   {item.title}
                 </h3>

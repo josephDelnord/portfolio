@@ -1,9 +1,9 @@
 import type React from "react";
 import { useNavigate } from "react-router-dom";
-import cv from "../assets/docs/cv_joseph_delnord.pdf";
 import { saveAs } from "file-saver";
+import cv from "../assets/docs/cv_joseph_delnord.pdf";
 import ProjectCard from "./ProjectCard";
-// import hero from "../assets/img/hero.webp";
+
 import portfolio from "../assets/img/portfolio.webp";
 import cinesaveurs from "../assets/img/cinesaveurs.webp";
 import coffeeshop from "../assets/img/coffeeshop.webp";
@@ -35,7 +35,6 @@ const projects = [
       "Envoi d'emails via emailJS.",
     ],
   },
-  // Dupliquer le même projet plusieurs fois
   {
     id: "cinesaveurs",
     name: "Ciné Saveurs",
@@ -44,7 +43,6 @@ const projects = [
     tags: [
       "React",
       "TypeScript",
-      "JavaScript",
       "SCSS",
       "Node.js",
       "MongoDB",
@@ -122,7 +120,6 @@ const projects = [
       "Intégration de TypeScript pour une meilleure typage du code.",
     ],
   },
-  // Ajoutez autant de duplications que nécessaire
 ];
 
 const ProjectsList: React.FC = () => {
@@ -136,8 +133,9 @@ const ProjectsList: React.FC = () => {
     const fileUrl = cv;
     saveAs(fileUrl, "cv_joseph_delnord.pdf");
   };
+
   return (
-    <section className="flex flex-col items-center justify-between min-h-screen py-12">
+    <section className="flex flex-col items-center justify-between min-h-screen my-32">
       <div className="container mx-auto p-8 bg-white rounded-lg shadow-lg mb-auto">
         <div className="relative mb-20 mt-10">
           <div className="relative px-6 py-4 bg-gradient-to-r from-teal-400 to-blue-500 rounded-lg shadow-md">
@@ -146,19 +144,22 @@ const ProjectsList: React.FC = () => {
             </h2>
           </div>
         </div>
-        {/* Fond blanc pour la page entière */}
-        <div className="flex flex-wrap justify-center">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+
+        {/* Wrapper responsive */}
+        <div className="w-full overflow-x-hidden px-2 sm:px-0">
+          <div className="flex flex-wrap justify-center">
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
         </div>
+
         <footer className="mt-20 text-center mx-20">
           <p className="text-xl text-gray-700 mb-4">
             N’hésitez pas à me contacter pour explorer les possibilités de
             collaboration !
           </p>
           <div className="flex justify-center gap-4 mt-20 mb-20">
-            {/* Bouton Contact */}
             <button
               type="button"
               className="px-6 py-3 bg-white text-blue-500 font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white border-2 border-blue-500 hover:border-blue-900 transition duration-300"
@@ -166,7 +167,6 @@ const ProjectsList: React.FC = () => {
             >
               Me contacter
             </button>
-            {/* Bouton Télécharger CV avec handler */}
             <button
               type="button"
               className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-900 hover:text-white transition duration-300"
