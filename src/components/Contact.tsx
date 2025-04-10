@@ -8,11 +8,18 @@ const ContactForm = () => {
   const [status, setStatus] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  // Fonction pour gérer la soumission du formulaire
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isFormValid = name.trim() && emailRegex.test(email) && message.trim();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
 
+    if (!isFormValid) {
+      setStatus("Veuillez remplir tous les champs correctement.");
+      return;
+    }
+
+    setLoading(true);
     const form = e.target as HTMLFormElement;
 
     emailjs
@@ -21,11 +28,10 @@ const ContactForm = () => {
         "template_rzj5wgh",
         form,
         "Kwnt2UMPCjTtiS3yE"
-      ) // Remplace par tes identifiants
+      )
       .then(
         () => {
           setStatus("Message envoyé avec succès !");
-          // Réinitialiser les champs du formulaire
           setName("");
           setEmail("");
           setMessage("");
@@ -61,7 +67,7 @@ const ContactForm = () => {
             </label>
             <input
               id="name"
-              name="name" // Ajoute l'attribut 'name' pour EmailJS
+              name="name"
               type="text"
               placeholder="Votre nom"
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -69,6 +75,11 @@ const ContactForm = () => {
               onChange={(e) => setName(e.target.value)}
               required
             />
+            {name && name.trim().length < 3 && (
+              <p className="text-red-500 text-sm mt-1">
+                Le nom est trop court.
+              </p>
+            )}
           </div>
           <div className="mb-5">
             <label
@@ -79,7 +90,7 @@ const ContactForm = () => {
             </label>
             <input
               id="email"
-              name="email" // Ajoute l'attribut 'name' pour EmailJS
+              name="email"
               type="email"
               placeholder="Votre adresse email"
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -87,6 +98,11 @@ const ContactForm = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+            {email && !emailRegex.test(email) && (
+              <p className="text-red-500 text-sm mt-1">
+                Adresse email invalide.
+              </p>
+            )}
           </div>
           <div className="mb-5">
             <label
@@ -97,23 +113,32 @@ const ContactForm = () => {
             </label>
             <textarea
               id="message"
-              name="message" // Ajoute l'attribut 'name' pour EmailJS
+              name="message"
               placeholder="Écrivez votre message ici"
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               required
             />
+            {message && message.trim().length < 10 && (
+              <p className="text-red-500 text-sm mt-1">
+                Le message est trop court.
+              </p>
+            )}
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-900 transition duration-300"
-            disabled={loading}
+            className={`w-full py-3 rounded-lg text-white transition duration-300 ${
+              isFormValid && !loading
+                ? "bg-blue-500 hover:bg-blue-900"
+                : "bg-gray-400 cursor-not-allowed"
+            }`}
+            disabled={!isFormValid || loading}
           >
             {loading ? "Envoi en cours..." : "Envoyer"}
           </button>
         </form>
-        {/* Affichage du statut après l'envoi */}
+
         {status && (
           <div
             className={`mt-4 text-center text-sm ${
